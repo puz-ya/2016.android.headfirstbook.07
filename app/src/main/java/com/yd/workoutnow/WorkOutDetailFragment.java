@@ -1,8 +1,8 @@
 package com.yd.workoutnow;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +13,7 @@ import android.view.ViewGroup;
  */
 public class WorkOutDetailFragment extends Fragment {
 
+    private long mDetailID;
 
     public WorkOutDetailFragment() {
         // Required empty public constructor
@@ -26,4 +27,7 @@ public class WorkOutDetailFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_work_out_detail, container, false);
     }
 
+    public void setWorkout(long id){
+        mDetailID = id;
+    }
 }
