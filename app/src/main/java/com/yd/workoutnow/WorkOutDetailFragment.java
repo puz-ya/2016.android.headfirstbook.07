@@ -23,6 +23,9 @@ public class WorkOutDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if(savedInstanceState != null){
+            mDetailID = savedInstanceState.getLong("workoutID");
+        }
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_work_out_detail, container, false);
     }
@@ -45,5 +48,10 @@ public class WorkOutDetailFragment extends Fragment {
             TextView description = (TextView) view.findViewById(R.id.detail_descr);
             description.setText(workOutData.getDescr());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        savedInstanceState.putLong("workoutID",mDetailID);
     }
 }

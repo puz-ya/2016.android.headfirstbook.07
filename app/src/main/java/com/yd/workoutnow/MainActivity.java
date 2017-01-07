@@ -1,7 +1,7 @@
 package com.yd.workoutnow;
 
 import android.app.Activity;
-//import android.support.v7.app.AppCompatActivity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 
 public class MainActivity
@@ -18,6 +18,14 @@ public class MainActivity
 
     @Override
     public void itemClicked(long id){
-        //details for future
+
+        WorkOutDetailFragment detailFragment = new WorkOutDetailFragment();
+        detailFragment.setWorkout(id);
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, detailFragment);
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }
