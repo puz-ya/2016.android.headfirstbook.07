@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,5 +29,21 @@ public class WorkOutDetailFragment extends Fragment {
 
     public void setWorkout(long id){
         mDetailID = id;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        View view = getView();
+        if(view != null){
+            WorkOutData workOutData = WorkOutData.workOutDatas[(int) mDetailID];
+
+            TextView title = (TextView) view.findViewById(R.id.detail_title);
+            title.setText(workOutData.getName());
+
+            TextView description = (TextView) view.findViewById(R.id.detail_descr);
+            description.setText(workOutData.getDescr());
+        }
     }
 }
